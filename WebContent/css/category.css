@@ -1,0 +1,25 @@
+.category {
+    width: 960px;
+    height: 40px;
+    margin: 0px auto;
+    padding: 0px;
+    border: none;
+}
+
+.category input {
+    background-color: #EEEEEE;
+    border: none;
+    color: black;
+    padding: 12px 32px;
+    width: 240px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    outline: none;
+}
+
+.category input:hover {
+    background-color: #CCCCCC;
+    cursor: pointer;
+}
