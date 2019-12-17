@@ -55,7 +55,7 @@
         <div class="content" style="width: 480px;">
             <label></label>
             <label style="font-size: 18pt;text-align: center;">登录到web技术课程网站</label>
-            <label></label>
+            <label style="font-size: 8pt;text-align: center;">测试账户/密码：webteach &nbsp;您也可自行注册测试</label>
             <label style="padding-left: 2px;color: red;font-size: 10pt;text-align: center;display: none;" id="warning"></label>
             <form action="login.do" method="post" onsubmit='return checkLoginForm()' target="loginBackContent" accept-charset="UTF-8">
                 <label style="padding-left: 2px;color: darkgray;">用户名</label><br>
