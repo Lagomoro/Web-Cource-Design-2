@@ -63,9 +63,9 @@ $("iframe[name=replyBackContent]").on("load", function() {
     var json = JSON.parse(responseText);
     switch(json.err_code){
     case 0:
-        checkComments();
         hideReply();
         activeCommentButton();
+        window.location.href = "./chat.jsp";
         break;
     default:
         changeCommentButton(json.err_msg);

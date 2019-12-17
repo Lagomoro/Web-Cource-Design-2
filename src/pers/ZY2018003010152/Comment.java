@@ -70,6 +70,10 @@ public class Comment {
 		return this.username.equals("webteach") ? "<font style=\\\"color: gold; font-size: 10px\\\">官方认证：任课教师</font>" : "";
 	}
 	
+	public String getJspStar() {
+		return this.username.equals("webteach") ? "<font style=\"color: gold; font-size: 10px\">官方认证：任课教师</font>" : "";
+	}
+	
 	public void toHtml(ArrayList<Comment> comments, StringBuilder builder) {
 		if(this.haveFather()) {
 			Comment fatherComment = this.getFatherComment(comments);
@@ -98,7 +102,7 @@ public class Comment {
 		if(this.haveFather()) {
 			Comment fatherComment = this.getFatherComment(comments);
 			if(fatherComment != null) {
-				builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getStar() + " " + 
+				builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getJspStar() + " " + 
 						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(this.timestamp) + " &nbsp;&nbsp;&nbsp;&nbsp;" + 
 						"<a href=\"javascript:void(0)\" onclick=\"showReply(" + this.getId() + ", '" + 
 						this.getReplyHtml(30) + "')\">回复</a></label>");
@@ -106,7 +110,7 @@ public class Comment {
 				builder.append("<label>" + this.content + "</label></div>");
 			}
 		} else {
-			builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getStar() + " " + 
+			builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getJspStar() + " " + 
 					new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(this.timestamp) + " &nbsp;&nbsp;&nbsp;&nbsp;" + 
 					"<a href=\"javascript:void(0)\" onclick=\"showReply(" + this.getId() + ", \'" + 
 					this.getReplyHtml(30) +  "\')\">回复</a></label>");
