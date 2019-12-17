@@ -1,3 +1,15 @@
+function getCookies(){
+    var cookieObj = {};
+    var temp = [];
+    var cookies = document.cookie.split(";");
+    for(var i = 0; i < cookies.length;i++){
+        if(cookies[i]) {
+            temp = cookies[i].split("=");
+            cookieObj[temp[0].trim()] = temp[1].trim();
+        }
+    }
+    return cookieObj;
+}
 function showReply(father_id, html){ 
     var cookies = getCookies();
     if(cookies.username){

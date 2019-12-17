@@ -67,11 +67,10 @@
                 StringBuilder builder = new StringBuilder();
                 for (Comment comment : comments) {
                     if(!comment.haveFather()) {
-                        comment.toHtml(comments, builder);
+                        comment.toJspHtml(comments, builder);
                     }
                 }
-		        %>
-                <%=builder.toString()%>
+		        %><%=builder.toString()%>
             </div>
         </div>
         <div id="replyWindow" class="reply_window">

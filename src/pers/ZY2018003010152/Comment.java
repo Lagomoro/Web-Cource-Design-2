@@ -94,6 +94,30 @@ public class Comment {
 		}
 	}
 	
+	public void toJspHtml(ArrayList<Comment> comments, StringBuilder builder) {
+		if(this.haveFather()) {
+			Comment fatherComment = this.getFatherComment(comments);
+			if(fatherComment != null) {
+				builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getStar() + " " + 
+						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(this.timestamp) + " &nbsp;&nbsp;&nbsp;&nbsp;" + 
+						"<a href=\"javascript:void(0)\" onclick=\"showReply(" + this.getId() + ", '" + 
+						this.getReplyHtml(30) + "')\">回复</a></label>");
+				builder.append(fatherComment.haveFather() ? fatherComment.getCallbackHtml(0) : "");
+				builder.append("<label>" + this.content + "</label></div>");
+			}
+		} else {
+			builder.append("<div><label>" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getStar() + " " + 
+					new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(this.timestamp) + " &nbsp;&nbsp;&nbsp;&nbsp;" + 
+					"<a href=\"javascript:void(0)\" onclick=\"showReply(" + this.getId() + ", \'" + 
+					this.getReplyHtml(30) +  "\')\">回复</a></label>");
+			builder.append("<label>" + this.content + "</label>");
+			for (Comment comment : childs) {
+				comment.toJspHtml(comments, builder);
+			}
+			builder.append("</div>");
+		}
+	}
+	
 	public String getCallbackHtml(int length) {
 		String callbackHtml = "<div><label>回复：" + MySQLModel.getUserNickname(this.username) + "&lt;" + this.username + "&gt;" + this.getStar() + " " + 
 				new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(this.timestamp) + "<br>";
